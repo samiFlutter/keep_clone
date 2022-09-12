@@ -16,6 +16,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Center(child: Text("keep clone ")),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.autorenew),
+          onPressed: () {},
+        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: itemsService.listItems,

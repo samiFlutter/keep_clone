@@ -13,8 +13,24 @@ class ItemModel extends StatefulWidget {
 class _ItemModelState extends State<ItemModel> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-    );
+    return 
+      InkWell(
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              height: 100,
+              //color: Colors.amberAccent,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
+      )
+    ;
   }
 }
