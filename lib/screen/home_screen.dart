@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:keep_clone/model/simple_model.dart';
+import 'package:keep_clone/screen/navdrawer_screen.dart';
 import 'package:keep_clone/screen/new_item_screen.dart';
 import 'package:keep_clone/service/items_service.dart';
 import 'package:keep_clone/service/my_databasehelper.dart';
@@ -52,70 +53,7 @@ class _HomeState extends State<Home> {
                     child: Text('NO Groceries in list.'),
                   )
                 : ListView(
-                    children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey[300]!,
-                                        spreadRadius: 1,
-                                        blurRadius: 3)
-                                  ],
-                                  border: Border.all(color: Colors.grey[100]!),
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    icon: new Icon(Icons.menu),
-                                    onPressed: () =>
-                                        _scaffoldKey.currentState?.openDrawer(),
-                                  ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
-                                    child: TextField(
-                                      style: const TextStyle(fontSize: 20),
-                                      //scrollPadding: EdgeInsets.all(30),
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Image.asset(
-                                      'assets/four_square.png',
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.02,
-                                      width:
-                                          MediaQuery.of(context).size.height *
-                                              0.02,
-                                    ),
-                                  ),
-                                  // IconButton(
-
-                                  //     icon: Icon(Icons.circle_rounded),
-                                  //     onPressed: () {}),
-                                  RawMaterialButton(
-                                    onPressed: () {},
-                                    elevation: 2.0,
-                                    fillColor: Colors.amber,
-                                    child: Icon(
-                                      Icons.mail,
-                                      size: 20.0,
-                                    ),
-                                    //padding: EdgeInsets.all(5.0),
-                                    shape: CircleBorder(),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ] +
+                    children: <Widget>[searchBar()] +
                         snapshot.data!.map((grocery) {
                           return Center(
                             child: Card(
@@ -197,6 +135,62 @@ class _HomeState extends State<Home> {
       //   children: itemsService.listItems,
       // ),
       bottomSheet: getFooter(),
+    );
+  }
+
+  Widget searchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[300]!, spreadRadius: 1, blurRadius: 3)
+            ],
+            border: Border.all(color: Colors.grey[100]!),
+            borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: new Icon(Icons.menu),
+              onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: TextField(
+                style: const TextStyle(fontSize: 20),
+                //scrollPadding: EdgeInsets.all(30),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            Container(
+              child: Image.asset(
+                'assets/four_square.png',
+                height: MediaQuery.of(context).size.height * 0.02,
+                width: MediaQuery.of(context).size.height * 0.02,
+              ),
+            ),
+            // IconButton(
+
+            //     icon: Icon(Icons.circle_rounded),
+            //     onPressed: () {}),
+            RawMaterialButton(
+              onPressed: () {},
+              elevation: 2.0,
+              fillColor: Colors.amber,
+              child: Icon(
+                Icons.mail,
+                size: 20.0,
+              ),
+              //padding: EdgeInsets.all(5.0),
+              shape: CircleBorder(),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -306,59 +300,6 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class NavDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Text(
-              'Side menu',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              // image: DecorationImage(
-              //     fit: BoxFit.fill,
-              //     image: AssetImage('assets/images/cover.jpg')
-              //     )
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {
-              Navigator.pop(context),
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-        ],
       ),
     );
   }
