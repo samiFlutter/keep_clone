@@ -35,7 +35,7 @@ class DatabaseHelper {
       description TEXT
     )
 ''');
-  await db.execute('''
+    await db.execute('''
     CREATE TABLE labels(
       id INTEGER PRIMARY KEY,
       name TEXT
@@ -81,9 +81,7 @@ class DatabaseHelper {
 //////pour le table labels
   ///
 
-
   Future<List<LabelModel>> getLabelModels() async {
-
     Database db = await instance.database;
     var labels = await db.query(
       'labels',

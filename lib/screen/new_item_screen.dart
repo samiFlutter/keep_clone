@@ -54,8 +54,8 @@ class _NewItemScreenState extends State<NewItemScreen> {
               onPressed: () {
                 setState(() {
                   bt2
-                      ? bt2Icon = Icons.notification_add_outlined
-                      : bt2Icon = Icons.notification_add;
+                      ? bt2Icon = Icons.add_alert_outlined
+                      : bt2Icon = Icons.add_alert;
                   bt2 = !bt2;
                 });
                 // do something
