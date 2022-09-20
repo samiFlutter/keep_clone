@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_native_splash: ^2.2.9
   material_floating_search_bar: ^0.3.7
   path_provider:
   path:
@@ -52,7 +53,9 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/splash.png"
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -63,7 +66,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/google_keep.png
+    - assets/splash.png
+    - assets/four_square.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

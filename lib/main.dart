@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:keep_clone/screen/home_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
 

@@ -51,15 +51,30 @@ class _NewLabelScreenState extends State<NewLabelScreen> {
                       children: upList() +
                           snapshot.data!.map((label) {
                             return Center(
-                              child: Container(
-                                color: selectedId == label.id
-                                    ? Colors.amber
-                                    : Colors.white,
-                                child: ListTile(
-                                  leading: Icon(Icons.label_outline),
-                                  title: Text(label.name),
-                                  onTap: () => {},
-                                ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    color: selectedId == label.id
+                                        ? Colors.amber
+                                        : Colors.white,
+                                    child: ListTile(
+                                      leading: Icon(Icons.label_outline),
+                                      title: Text(label.name),
+                                      onTap: () => {},
+                                    ),
+                                  ),
+                                  Container(
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.edit,
+                                        )),
+                                  ),
+                                ],
                               ),
                             );
                           }).toList(),
